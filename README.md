@@ -1,2 +1,2 @@
-# zillesen.github.io
-Personal Brand Brochure
+# zillesen.com
+Personal Brand Brochure | Work in Progress
