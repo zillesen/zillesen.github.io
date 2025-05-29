@@ -1,0 +1,128 @@
+.navbar {
+    background-color: var(--background-white);
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.nav-container {
+    max-width: var(--max-document-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--standard-padding);
+    height: 50px;
+}
+
+.nav-brand a {
+    font-family: 'Abril Fatface', cursive;
+    font-size: 1.3em;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.nav-brand a:hover {
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9em;
+    padding: 6px 16px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+    background-color: var(--background-light);
+}
+
+.nav-link.active {
+    color: var(--background-white);
+    background-color: var(--accent-color);
+    font-weight: 500;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 1px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+@media (max-width: 700px) {
+    .nav-container {
+        padding: 0 15px;
+        height: 45px;
+    }
+    
+    .nav-brand a {
+        font-size: 1.1em;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 45px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 45px);
+        background-color: var(--background-white);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 40px;
+        gap: 10px;
+        transition: left 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 1em;
+        padding: 10px 25px;
+        width: 200px;
+        text-align: center;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+} 
