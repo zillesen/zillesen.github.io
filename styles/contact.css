@@ -1,0 +1,85 @@
+.contact-headline {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.contact-main-content-wrapper {
+    text-align: center;
+}
+
+.contact-intro-text {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-comfortable);
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+.contact-profile-image {
+    width: 9rem; 
+    height: 9rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.25rem solid var(--background-white);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+}
+
+.contact-secondary-text {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-comfortable);
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+.contact-info-section {
+    text-align: left;
+    display: inline-block;
+}
+
+.contact-info-section h4 {
+    font-size: var(--text-base);
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.contact-info-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.contact-info-section li {
+    font-size: var(--text-sm);
+    line-height: var(--line-height-comfortable);
+}
+
+.contact-info-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.contact-info-section a:hover {
+    text-decoration: underline;
+}
+
+@media (width >= 40rem) {
+    .contact-headline {
+        font-size: var(--text-xl);
+    }
+
+    .contact-intro-text,
+    .contact-secondary-text {
+        font-size: var(--text-base);
+    }
+
+    .contact-profile-image {
+        width: 10rem;
+        height: 10rem;
+    }
+
+     .contact-info-section {
+        text-align: left;
+    }
+}

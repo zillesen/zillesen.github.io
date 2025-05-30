@@ -1,0 +1,226 @@
+:root {
+    --step-1-bg: #F45A60;
+    --step-2-bg: #48C78C;
+    --step-3-bg: #99CC41;
+    --step-4-bg: #ED9334;
+    --step-5-bg: #40B6DF;
+    --diagram-center-bg: #555;
+}
+
+.journey-diagram-container {
+    text-align: center;
+    position: relative;
+    margin: 1.5rem auto;
+}
+
+.journey-diagram {
+    width: 100%;
+    max-width: 18rem;
+    height: auto;
+}
+
+.journey-center-text {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--background-white);
+    padding: 0.3rem 0.6rem;
+    font-weight: bold;
+    font-size: var(--text-xs);
+    text-align: center;
+    line-height: 1.2;
+    width: 35%;
+    max-width: 5rem;
+}
+
+.journey-steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    width: 100%;
+}
+
+.journey-step {
+    padding: 0.5rem;
+    text-align: left;
+}
+
+.journey-step h3 {
+    font-size: var(--text-base);
+}
+
+.journey-step.step-1 h3 { color: var(--step-1-bg); }
+.journey-step.step-2 h3 { color: var(--step-2-bg); }
+.journey-step.step-3 h3 { color: var(--step-3-bg); }
+.journey-step.step-4 h3 { color: var(--step-4-bg); }
+.journey-step.step-5 h3 { color: var(--step-5-bg); }
+
+.journey-step p {
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--primary-color);
+}
+
+.journey-layout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.how-quote {
+    margin-top: 2rem;
+    background-color: var(--background-blue-light);
+    padding: var(--standard-padding);
+    text-align: center;
+}
+
+.finance-leader-section .intro-section h2 {
+    font-size: var(--text-xl);
+}
+
+.finance-leader-section .intro-section p {
+    font-size: var(--text-base);
+    margin-bottom: 1.5rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.values-column,
+.working-style-column {
+    padding: 1.5rem;
+}
+
+.values-column {
+    background-color: var(--background-blue-light);
+}
+
+.working-style-column {
+    background-color: #FAF1E5;
+}
+
+.values-column h3,
+.working-style-column h3 {
+    font-size: var(--text-lg);
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.working-style-column h4 {
+    font-size: var(--text-base);
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--primary-color);
+}
+
+.value-item {
+    margin-bottom: 1rem;
+}
+
+.value-item:last-child {
+    margin-bottom: 0;
+}
+
+.value-item h4 {
+    font-size: var(--text-base);
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
+}
+
+.value-item p {
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.value-item p.italic {
+    margin-top: 0.25rem;
+}
+
+.working-style-column ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.working-style-column li {
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.how-brochure-quote {
+    background-color: var(--background-gray-light);
+    padding: var(--standard-padding);
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.how-brochure-quote p {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    color: var(--primary-color);
+    margin: 0.3125rem 0;
+}
+
+@media (width >= 40rem) {
+    .journey-layout-container {
+        gap: 1.5rem;
+        max-width: var(--max-document-width);
+        margin: 1.5rem auto;
+    }
+
+    .journey-diagram-container {
+        margin: 0;
+    }
+
+    .journey-diagram {
+        max-width: 20rem;
+    }
+
+    .journey-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .journey-step.step-1,
+    .journey-step.step-2,
+    .journey-step.step-3,
+    .journey-step.step-4 {
+        text-align: left;
+    }
+
+    .journey-step.step-5 {
+        grid-column: 1 / -1;
+        text-align: center;
+        max-width: calc(50% - (var(--standard-padding) / 2));
+        margin: 0 auto;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .finance-leader-section .intro-section h2 {
+        font-size: var(--text-2xl);
+    }
+
+    .values-column,
+    .working-style-column {
+        padding: 2rem;
+    }
+}
