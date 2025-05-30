@@ -1,8 +1,8 @@
 :root {
     --step-1-bg: #F45A60;
     --step-2-bg: #48C78C;
-    --step-3-bg: #99CC41;
-    --step-4-bg: #ED9334;
+    --step-3-bg: #ED9334;
+    --step-4-bg: #99CC41;
     --step-5-bg: #40B6DF;
     --diagram-center-bg: #555;
 }
@@ -250,10 +250,10 @@
 
     .journey-step.step-1,
     .journey-step.step-2,
-    .journey-step.step-3,
-    .journey-step.step-4 {
+    .journey-step.step-3 {
         text-align: left;
     }
+    .journey-step.step-4,
 
     .journey-step.step-5 {
         grid-column: 1 / -1;
