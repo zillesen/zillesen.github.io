@@ -7,6 +7,44 @@
     --diagram-center-bg: #555;
 }
 
+.how-header {
+    background: linear-gradient(135deg, #2C8C99 0%, var(--accent-color) 100%);
+    color: var(--background-white);
+    text-align: center;
+    padding: 2rem var(--standard-padding);
+    position: relative;
+}
+
+.how-header-content {
+    max-width: var(--max-document-width);
+    margin: 0 auto;
+}
+
+.how-header h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+    margin: 0 0 0.5rem 0;
+    color: var(--background-white);
+}
+
+.how-header-subtitle {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.how-header-line {
+    border: none;
+    height: 0.125rem;
+    background-color: var(--background-white);
+    width: 4rem;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
 .journey-diagram-container {
     text-align: center;
     position: relative;
@@ -178,6 +216,20 @@
 }
 
 @media (width >= 40rem) {
+    .how-header {
+        padding: 3rem var(--standard-padding);
+    }
+
+    .how-header h1 {
+        font-size: var(--text-4xl);
+        line-height: var(--text-4xl--line-height);
+    }
+
+    .how-header-subtitle {
+        font-size: var(--text-lg);
+        line-height: var(--text-lg--line-height);
+    }
+
     .journey-layout-container {
         gap: 1.5rem;
         max-width: var(--max-document-width);

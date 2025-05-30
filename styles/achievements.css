@@ -1,3 +1,41 @@
+.achievements-header {
+    background: linear-gradient(135deg, #5DB1D1 0%, #3B4C7A 100%);
+    color: var(--background-white);
+    text-align: center;
+    padding: 2rem var(--standard-padding);
+    position: relative;
+}
+
+.achievements-header-content {
+    max-width: var(--max-document-width);
+    margin: 0 auto;
+}
+
+.achievements-header h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+    margin: 0 0 0.5rem 0;
+    color: var(--background-white);
+}
+
+.achievements-header-subtitle {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.achievements-header-line {
+    border: none;
+    height: 0.125rem;
+    background-color: var(--background-white);
+    width: 4rem;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
 .achievements-intro h2 {
     font-size: var(--text-lg);
     line-height: var(--text-lg--line-height);
@@ -107,6 +145,20 @@
 }
 
 @media (width >= 40rem) {
+    .achievements-header {
+        padding: 3rem var(--standard-padding);
+    }
+
+    .achievements-header h1 {
+        font-size: var(--text-4xl);
+        line-height: var(--text-4xl--line-height);
+    }
+
+    .achievements-header-subtitle {
+        font-size: var(--text-lg);
+        line-height: var(--text-lg--line-height);
+    }
+
     .achievements-intro h2 {
         font-size: var(--text-xl);
     }

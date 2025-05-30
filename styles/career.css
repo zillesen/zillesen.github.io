@@ -1,9 +1,48 @@
+
 :root {
     --timeline-color-entrepreneurial: rgb(220, 173, 150);
     --timeline-color-consulting: rgb(130, 181, 167);
     --timeline-color-corporate: rgb(163, 183, 201);
     --timeline-line-color: #ddd;
     --timeline-dot-size: 1.25rem;
+}
+
+.career-header {
+    background: linear-gradient(135deg, #D2691E 0%, #B8860B 100%);
+    color: var(--background-white);
+    text-align: center;
+    padding: 2rem var(--standard-padding);
+    position: relative;
+}
+
+.career-header-content {
+    max-width: var(--max-document-width);
+    margin: 0 auto;
+}
+
+.career-header h1 {
+    font-family: 'Abril Fatface', cursive;
+    font-size: var(--text-3xl);
+    line-height: var(--text-3xl--line-height);
+    margin: 0 0 0.5rem 0;
+    color: var(--background-white);
+}
+
+.career-header-subtitle {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.career-header-line {
+    border: none;
+    height: 0.125rem;
+    background-color: var(--background-white);
+    width: 4rem;
+    margin: 0 auto;
+    opacity: 0.8;
 }
 
 .timeline {
@@ -131,6 +170,20 @@
 }
 
 @media (width >= 40rem) {
+    .career-header {
+        padding: 3rem var(--standard-padding);
+    }
+
+    .career-header h1 {
+        font-size: var(--text-4xl);
+        line-height: var(--text-4xl--line-height);
+    }
+
+    .career-header-subtitle {
+        font-size: var(--text-lg);
+        line-height: var(--text-lg--line-height);
+    }
+
     .timeline-segment-connector {
         left: 50%;
         transform: translateX(-50%);
