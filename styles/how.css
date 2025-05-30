@@ -250,10 +250,10 @@
 
     .journey-step.step-1,
     .journey-step.step-2,
-    .journey-step.step-3 {
+    .journey-step.step-3,
+    .journey-step.step-4 {
         text-align: left;
     }
-    .journey-step.step-4,
 
     .journey-step.step-5 {
         grid-column: 1 / -1;
