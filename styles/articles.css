@@ -57,8 +57,8 @@
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    min-width: 100%;
+    flex: 1;
 }
 
 .article-card:hover {
@@ -95,6 +95,10 @@
 }
 
 @media (width >= 40rem) {
+    .articles-grid {
+        align-items: stretch;
+    }
+
     .articles-header {
         padding: 3rem var(--standard-padding);
     }
@@ -110,6 +114,6 @@
     }
 
     .article-card {
-        width: calc(50% - 0.5rem);
+        min-width: calc(50% - 0.5rem);
     }
 } 

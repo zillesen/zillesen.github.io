@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+    <title>Can We Predict a Bad Deal Before It Happens? - Robbert Zillesen</title>
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/navbar.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/article-detail.css">
+</head>
+<body>
+    <div class="page-container">
+
+        <header class="article-detail-header">
+            <div class="article-detail-header-content">
+                <h1>Can We Predict a Bad Deal Before It Happens?</h1>
+                <p class="article-detail-meta">Published May 25, 2025</p>
+                <hr class="article-detail-header-line">
+            </div>
+        </header>
+
+        <div class="container article-page-container">
+            <main class="article-content">
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQER349D_aFMHw/article-cover_image-shrink_720_1280/B4DZcGtiS1GcAM-/0/1748164298124?e=1754524800&v=beta&t=M-lF6Q3WezmKBYmxQSgx93jDag-G1BdORDtti08CGEc" alt="Can We Predict a Bad Deal Before It Happens? Cover Image" class="cover-image">
+
+                <div class="article-attribution">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGVEZajHWDX-Q/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1704808654957?e=1754524800&v=beta&t=BFQxJtadT7MO6EryaoMWfEXzyvKPY6BxudqUmw9X3VU" alt="Robbert Zillesen">
+                    <div class="article-attribution-info">
+                        <a href="contact.html" target="_blank" rel="noopener noreferrer">Robbert Zillesen</a>
+                        <p>Strategic Finance Partner — Empowering Growth Through Insight, Automation and Digital Transformation | Head of Finance | Group Controller | Head of FP&A</p>
+                        <p>Published: May 25, 2025</p>
+                    </div>
+                </div>
+
+                <h3>A Real-World Finance Example Using Python & Decision Trees</h3>
+                <p>Margins vanish. Discounts creep. Deals look good at the top line — and disappoint at the bottom. If you've ever reviewed monthly results and thought, <em>"We should have caught that earlier"</em> — this one's for you.</p>
+                <p>In this short article, I'll show how a finance team can build a simple machine learning model to <strong>flag mispriced transactions before they go out the door</strong>.</p>
+                <p>No AI jargon. No coding deep-dives. Just practical, finance-led logic — turned into predictive power using Python.</p>
+
+                <h3>A Quick Note Before We Start</h3>
+                <p>When preparing this article, I tested a few different ideas. Some models didn't work. Some business cases didn't fit. That's reality — not every dataset answers every question. In this article I only show the model which finally worked.</p>
+
+                <h3>What This Case Demonstrates</h3>
+                <p>A practical example of how finance can move from margin reporting to margin prevention — using machine learning in a transparent, business-aligned way.</p>
+                <p>The case shows how to:</p>
+                <ul>
+                    <li>Frame pricing risk in measurable terms</li>
+                    <li>Define a clear, finance-driven target variable</li>
+                    <li>Train a decision tree that mirrors commercial logic</li>
+                    <li>Translate model output into simple, actionable rules</li>
+                </ul>
+                <p>All achieved without relying on IT, building complex data pipelines, or requiring technical expertise.</p>
+                <p>One decision tree. Seconds to spot margin risk. A smarter way for finance to support commercial decisions.</p>
+
+                <h3>About the dataset:</h3>
+                <p>The analysis is based on over 10,000 customer transactions from a U.S.-based Superstore, originally sourced via Kaggle. The data spans 2014 to 2017 and includes multiple regions, product lines, and discount levels. To uncover deeper insights, additional features were engineered to better capture pricing dynamics, margin structure, customer behavior, and seasonal trends. (same set as previous article)</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQHdT2HweltzWw/article-inline_image-shrink_1000_1488/B4DZcGXJR2G8AQ-/0/1748158420467?e=1754524800&v=beta&t=bu5RblmdhegaAyOS81I3UdYaDr0O8LMlGbF1Klx42ms" alt="Article diagram or chart">
+                <hr>
+                <blockquote>
+                    <p><strong>From Business Problem to Working Model: Predicting Commercially Mispriced Sales Transactions</strong></p>
+                </blockquote>
+
+                <h2>1. The Business Question</h2>
+                <p><strong><em>Can we predict whether a sales transaction will result in a margin loss — despite high revenue?</em></strong></p>
+                <p>This is a classic blind spot in finance. Many deals look great on the surface — strong revenue, big volume — but quietly erode margin. By the time finance flags the issue, it's already in the books. This case tackles that challenge head-on, using a decision tree to answer a simple but high-impact question: <em>"Can we spot margin risk before the deal is approved?"</em></p>
+                <p>It's about moving from hindsight to foresight. From reporting margin… to predicting margin risk.</p>
+
+                <h2>2. The Business Objective</h2>
+                <p>Build a <strong>machine learning model</strong> that flags <strong>commercially mispriced transactions</strong> — before they're signed off.</p>
+                <p>This supports better decisions by:</p>
+                <ul>
+                    <li>Highlighting risky deals for sales leaders</li>
+                    <li>Improving pricing and discount discipline</li>
+                    <li>Reducing margin erosion proactively</li>
+                </ul>
+                <p>This isn't a theoretical exercise. It's a tool finance can use to guide and challenge the commercial process in real time.</p>
+
+                <h2>3. Target Variable: "Commercial Mispricing"</h2>
+                <p>We define a deal as <strong>mispriced</strong> if:</p>
+                <ul>
+                    <li><strong>Revenue per order line > $100</strong>, and</li>
+                    <li><strong>Profit margin < 5%</strong></li>
+                </ul>
+                <p>Class 1 means 'Mispriced deal' and Class 0 means 'Commercially acceptable'</p>
+
+                <h2>4. Feature Selection: What Drives Margin Risk?</h2>
+                <p>Following features were chosen to reflect the real-world logic of pricing, cost structures, and commercial dynamics.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQGCTPVaR5Y2lw/article-inline_image-shrink_1000_1488/B4DZcGf2FHIAAQ-/0/1748160701218?e=1754524800&v=beta&t=c63KOrkdwyja-uEgLvm6GXz-yTxeLNIc2v6QLv_yu3o" alt="Feature selection chart">
+
+                <h2>5. Data Preparation</h2>
+                <p>With the business question and features defined, the next step is to prepare the dataset for modeling. This isn't about perfect pipelines — it's about making the data clean, interpretable, and aligned with commercial needs.</p>
+                <p>Key steps include:</p>
+                <ul>
+                    <li><strong>Engineering the target variable:</strong> commercial_mispricing Based on clear business logic — high revenue, low margin.</li>
+                    <li><strong>Creating a profit margin percentage column</strong> Calculated as (Profit / Sales) at the line level to explicitly quantify margin erosion.</li>
+                    <li><strong>Cleaning categorical fields</strong> Standardizing values across segment, region, weekday, and ship mode for consistent inputs.</li>
+                    <li><strong>Verifying numeric features</strong> Ensuring key variables (e.g., sales price, discount %, cost per unit) are accurate, complete, and properly formatted.</li>
+                </ul>
+                <p>The objective isn't just technical readiness — it's commercial clarity. The dataset is structured so finance teams can understand, validate, and communicate the insights effectively.</p>
+
+                <h2>6. Model Selection</h2>
+                <p>To ensure simplicity, interpretability, and business relevance, a Decision Tree Classifier is selected.</p>
+                <p><strong>Why a decision tree?</strong></p>
+                <ul>
+                    <li><strong>Transparent</strong> — Logic is easy to trace from root to leaf</li>
+                    <li><strong>Human-readable</strong> — Understandable for commercial and finance teams</li>
+                    <li><strong>Auditable</strong> — Each prediction is tied to explicit, explainable rules</li>
+                </ul>
+                <p>This makes it especially well-suited for business-facing applications where trust and clarity take precedence over complexity.</p>
+                <p><strong>Key Hyperparameters</strong></p>
+                <p>Settings are chosen to balance performance with interpretability:</p>
+                <ul>
+                    <li>max_depth = 6 — Controls tree complexity and prevents overfitting</li>
+                    <li>class_weight = "balanced" — Adjusts for class imbalance between mispriced and acceptable deals</li>
+                </ul>
+                <p><strong>Pipeline Approach</strong></p>
+                <p>Preprocessing and modeling are integrated into a Scikit-learn Pipeline:</p>
+                <ul>
+                    <li>One-hot encoding of categorical variables</li>
+                    <li>Pass-through of key numerical features (e.g., discount, margin, quantity)</li>
+                    <li>The decision tree model</li>
+                </ul>
+                <p><strong>This modular structure supports consistent testing, clear explanation, and smooth integration into finance workflows.</strong></p>
+                <hr>
+
+                <h2>7. Model Evaluation</h2>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQEfQghfhZgQIQ/article-inline_image-shrink_1500_2232/B4DZcGgzfgGwAU-/0/1748160952665?e=1754524800&v=beta&t=tFLZaJ9T7T47rgwjyuTayIlbVaqbt43CUMvT0-ViV-g" alt="Model evaluation metrics">
+                <h3>What These Metrics Show</h3>
+                <ul>
+                    <li><strong>99% recall</strong> for mispriced deals indicates that almost no risky transactions are missed in the test set</li>
+                    <li><strong>89% precision</strong> means that the majority of flagged deals are indeed mispriced</li>
+                    <li>A <strong>high F1 score</strong> of 94.2% signals strong balance between identifying bad deals and limiting false alarms</li>
+                    <li><strong>Overall accuracy</strong> (98.7%) s high, but less critical than recall and precision in this context</li>
+                </ul>
+                <p>In commercial finance, the cost of missing a bad deal typically outweighs the cost of flagging a good one. That makes recall the key metric — and in this case, the model delivers.</p>
+
+                <h2>8. Interpreting the Decision Tree</h2>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQEiapA6gmPDXw/article-inline_image-shrink_1500_2232/B4DZcGijqiGcAU-/0/1748161412550?e=1754524800&v=beta&t=e-9m58TY97RHEjFjbNWpgXfWaghcGFM_aOSgScwe3UU" alt="Decision tree visualization">
+                <span><strong>From Prediction to Practical Business Logic</strong></span>
+                <p>A core strength of decision trees is transparency — every decision can be traced back to clear, finance-aligned logic. In this case, the model behaves like a commercial analyst, translating data into actionable business rules.</p>
+
+                <h3>Root Node: Profit Margin Comes First</h3>
+                <ul>
+                    <li><strong>Condition:</strong> profit_margin_pct <= 0.054</li>
+                    <li>The first split checks whether the profit margin is below 5.4%. This directly mirrors the definition of a mispriced deal and confirms that the model prioritizes margin erosion.</li>
+                    <li><em>Why it matters:</em> The root node is the model's most influential decision. Leading with margin shows strong financial alignment.</li>
+                </ul>
+                <hr>
+
+                <h3>Quantity + Price: Micro-Deals Raise Red Flags</h3>
+                <ul>
+                    <li><strong>Path</strong>: quantity <= 8.5 → sales_price <= 9.57 → class = Mispriced</li>
+                    <li>Low-volume, low-price transactions are flagged — classic examples of small deals that often escape scrutiny but fail to cover costs.</li>
+                    <li><em>Why it matters:</em> A clear, intuitive rule that can be readily applied by commercial and finance teams.</li>
+                </ul>
+                <hr>
+
+                <h3>Margin Threshold + Region Logic</h3>
+                <ul>
+                    <li><strong>Path</strong>: profit_margin_pct <= 2.125 AND region ≠ East → Mispriced</li>
+                    <li>The model adjusts its judgment based on geography, allowing certain low-margin deals in specific regions but not universally.</li>
+                    <li><em>Why it matters:</em> Demonstrates flexibility and context awareness in commercial evaluation.</li>
+                </ul>
+                <hr>
+
+                <h3>High Sales Price ≠ Safe</h3>
+                <ul>
+                    <li><strong>Path</strong>: sales_price <= 101.015 AND profit_margin_pct <= 0.049 → Mispriced</li>
+                    <li>High revenue alone doesn't guarantee profitability. Some large deals still underperform once margin is considered.</li>
+                    <li><em>Why it matters:</em> Reinforces the need to assess deal quality beyond revenue figures.</li>
+                </ul>
+                <hr>
+
+                <h3>What the Tree Reveals</h3>
+                <p><strong>Root Logic is Financial</strong></p>
+                <ul>
+                    <li>Profit margin is the primary driver</li>
+                    <li>Reflects how finance teams assess deal quality</li>
+                </ul>
+                <p><strong>Commercial Thresholds Are Recognizable</strong></p>
+                <ul>
+                    <li>Triggers include: ● Price under $15 ● Quantity under 2 ● Aggressive discounting</li>
+                    <li>Rules are practical and familiar — not abstract machine logic</li>
+                </ul>
+                <p><strong>Customer and Fulfillment Factors Are Considered</strong></p>
+                <ul>
+                    <li>Variables like customer segment and ship mode (e.g., Same Day) influence predictions</li>
+                    <li>Adds useful commercial nuance</li>
+                </ul>
+                <p><strong>Pure Mispricing Zones Exist</strong></p>
+                <ul>
+                    <li>Some branches end in 100% mispriced classifications</li>
+                    <li>High-confidence indicators for automated flagging</li>
+                </ul>
+                <p><strong>Paths Are Simple</strong></p>
+                <ul>
+                    <li>Most decisions involve just 2–3 conditions</li>
+                    <li>Easy to translate into approval logic or alert systems</li>
+                </ul>
+
+                <h2>9. What Features Matter Most?</h2>
+                <p><strong>A Model That Thinks Like a Finance Team</strong></p>
+                <p>Feature importance analysis reveals which variables most influence predictions — and confirms strong alignment with how finance teams evaluate deal quality.</p>
+                <p><strong>What This Means for the Business</strong></p>
+                <p><strong>1. Financial Logic Drives the Model</strong></p>
+                <ul>
+                    <li>profit_margin_pct and sales_price rank highest</li>
+                    <li>These mirror the core metrics used in deal assessments 📌 <em>Implication:</em> Not a black box — financial logic made scalable</li>
+                </ul>
+                <p><strong>2. Commercial Levers Are Key Drivers</strong></p>
+                <ul>
+                    <li>Features like discount level, cost per unit, and quantity play a major role</li>
+                    <li>These reflect real business decisions, not technical artifacts 📌 <em>Implication:</em> Clear inputs for setting data-driven approval thresholds</li>
+                </ul>
+                <p><strong>3. Lower-Ranked Features Provide Strategic Nuance</strong></p>
+                <ul>
+                    <li>Elements like ship mode or order day may seem secondary</li>
+                    <li>Yet in specific categories or segments, they add valuable context 📌 <em>Implication:</em> Worth monitoring and refining in future iterations</li>
+                </ul>
+                <p>In summary, the model doesn't just predict — it reflects how commercial finance already thinks. The outcome: a scalable, explainable framework that supports smarter, faster decision-making.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQFExhjQaKaFOQ/article-inline_image-shrink_1500_2232/B4DZcGl9JKIEAc-/0/1748162303104?e=1754524800&v=beta&t=Cn0iwJzjuF1rYNUbKzrt2gm6hIKbaxXKNQwhdzh1Kdk" alt="Feature importance chart">
+
+                <h2>10. Turning the Tree into Business Rules</h2>
+                <p><strong>From Model Logic to Commercial Guardrails</strong></p>
+                <p>A core advantage of decision trees is explainability. Each prediction follows a clear, traceable path — structured as logical "if-then" rules. These paths can be directly translated into business-ready guardrails, enabling finance and sales teams to flag risky deals before they impact margin.</p>
+                <p><strong>Structure of Business Rules</strong></p>
+                <p>Each rule classifies a transaction as: 0 Commercially Acceptable vs 1 Mispriced Deal</p>
+                <p>Rules are driven by thresholds for:</p>
+                <ul>
+                    <li>Profit margin</li>
+                    <li>Sales price</li>
+                    <li>Quantity</li>
+                    <li>Customer segment</li>
+                    <li>Product category</li>
+                </ul>
+                <hr>
+
+                <p><strong>Example Rule:</strong> Flagging a Risky Deal Rule 5: Mispriced IF:</p>
+                <ul>
+                    <li>profit_margin_pct ≤ 0.05</li>
+                    <li>sales_price ≤ 14.9</li>
+                    <li>quantity ≤ 1.5</li>
+                    <li>segment = Home Office THEN: Flag as <strong>Mispriced</strong></li>
+                </ul>
+                <p><strong>Business Interpretation</strong></p>
+                <p>This rule captures small, low-margin transactions in the Home Office segment — deals that are often heavily discounted without sufficient volume to offset the margin impact.</p>
+                <p>This is not abstract machine logic — it reflects commercial intuition, structured for scale and consistency.</p>
+                <hr>
+
+                <p><strong>Strategic Takeaways</strong></p>
+                <ul>
+                    <li>These rules can be embedded into automated approval workflows or pricing alerts</li>
+                    <li>Sales teams gain real-time feedback when proposing commercially risky deals</li>
+                    <li>Finance can track rule-based violations and monitor trends over time</li>
+                    <li>The rule set is modular — easy to adjust as commercial priorities evolve</li>
+                </ul>
+                <p>This approach transforms predictive insight into actionable governance — guiding better decisions, deal by deal.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQHx8z7Uy-z6Fw/article-inline_image-shrink_1000_1488/B4DZcGmoH1GkAQ-/0/1748162479053?e=1754524800&v=beta&t=CVGuVBNF3PUTMuoDlX6YjK5C3N_8S1jwaCZnWEbz_W8" alt="Business rules example">
+                <p style="text-align: center;">Strategic Takeaways for the Business</p>
+
+
+                <h2>11. Bringing It to Life with Streamlit</h2>
+                <p><strong>From Spreadsheet Insight to On-Demand Prediction</strong></p>
+                <p>Building a model is only the beginning. True impact comes from embedding it into daily decision-making. To operationalize the insights, the decision tree is deployed into two Streamlit apps — giving finance and commercial teams direct access to the prediction logic.</p>
+
+                <h3>Option 1: Manual Entry — Line-by-Line Deal Check</h3>
+                <h4>Ideal for quick, ad-hoc assessments. Users can input individual deal parameters to test outcomes in real time:</h4>
+                <ul>
+                    <li>Set values for discount, sales price, and cost per unit</li>
+                    <li>Select options for category, region, segment, and ship mode</li>
+                    <li>Click <strong>Predict</strong> to receive an instant classification: Mispriced or Acceptable</li>
+                </ul>
+                <p>This interface allows business users to test deal scenarios before approval — with no need for technical skills or additional tools.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQH0nFxzpYIXcg/article-inline_image-shrink_1000_1488/B4DZcGm70uG8AU-/0/1748162559680?e=1754524800&v=beta&t=tAsstKnfRI3GHt0JSdN1hx0gu38qJGQR4s2USX29cPE" alt="Streamlit app input for manual entry">
+                <p style="text-align: center;">Input</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQErULHYnYSo5A/article-inline_image-shrink_400_744/B4DZcGnGc.IEAY-/0/1748162603136?e=1754524800&v=beta&t=ECpVKhF3xROspKyVnj7eM5rrUrMBLF58o3p6eQD6oiQ" alt="Streamlit app output for manual entry">
+                <p style="text-align: center;">Output</p>
+                <p>Model returns a clear prediction: <em>Good Deal</em> or <em>Mispriced</em></p>
+                <ul>
+                    <li>Confidence level helps users understand certainty behind the result</li>
+                </ul>
+                <p>Use case: A sales controller wants to check a new quote before approval.</p>
+
+                <h3>Option 2: Bulk Upload — Batch Evaluation from CSV</h3>
+                <p>Designed for operational audits or reviewing large volumes of transactions. Users can upload a complete dataset and instantly assess deal quality at scale:</p>
+                <ul>
+                    <li>Drag and drop a CSV file</li>
+                    <li>Preview the data before processing</li>
+                    <li>Receive a Prediction Summary with detailed outputs for each transaction</li>
+                </ul>
+                <p>This setup enables finance and sales operations to evaluate hundreds of deals in minutes — applying consistent commercial logic across the board.</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQHx795deSem_A/article-inline_image-shrink_400_744/B4DZcGnbzZG0AY-/0/1748162690679?e=1754524800&v=beta&t=mgdr0EHdbrxkbkeSbxgDlvcJvcgFBl75kgyFHE-6y0o" alt="Streamlit app input for bulk upload">
+                <p style="text-align: center;">Input</p>
+                <img src="https://media.licdn.com/dms/image/v2/D4D12AQGwXpGaSO-cVQ/article-inline_image-shrink_1500_2232/B4DZcGnfnKG8AU-/0/1748162706456?e=1754524800&v=beta&t=JpvKwyk44HRhpTmkXGadGpg5u5G72aSXKFaBr-rTgiI" alt="Streamlit app output for bulk upload">
+                <p style="text-align: center;">Output</p>
+
+                <p><strong>Key Capabilities</strong></p>
+                <ul>
+                    <li>Instantly see how many deals are flagged as mispriced</li>
+                    <li>Filter results by customer, region, or product category</li>
+                    <li>Use insights to challenge sales decisions or fine-tune pricing strategy</li>
+                </ul>
+                <p><strong>Example Use Case:</strong> FP&A reviews all Q2 sales to identify margin risk patterns and inform future discount policies.</p>
+                <p><strong>Why This Matters</strong></p>
+                <ul>
+                    <li>Eliminates the need for emailing models or running Python scripts manually</li>
+                    <li>Empowers sales, finance, and commercial operations to assess deal quality in seconds</li>
+                    <li>Bridges the gap from data science to business action — all through a simple, accessible interface</li>
+                </ul>
+
+                <h2>12. Wrap-Up: From Margin Awareness to Margin Prevention</h2>
+                <p>This isn't about building the perfect model. It's about proving a point: <strong>Finance can predict margin risk — before it hits the P&L.</strong></p>
+                <p>Using a simple decision tree and a structured, finance-first approach, this case demonstrates how to:</p>
+                <ul>
+                    <li>Frame a real commercial challenge</li>
+                    <li>Translate it into a measurable, predictive target</li>
+                    <li>Train a model aligned with financial logic</li>
+                    <li>Deploy it in a way that business teams can use — instantly</li>
+                </ul>
+                <p>No complex pipelines. No black-box AI. Just clear finance thinking — operationalized at scale.</p>
+                <hr>
+
+                <p><strong>What This Means for Finance Teams</strong></p>
+                <ul>
+                    <li>The data is already available</li>
+                    <li>The commercial drivers are already well understood</li>
+                    <li>The tools now exist to turn that insight into proactive decision support</li>
+                </ul>
+                <p>Whether it's deal approvals, pricing discipline, or performance reviews — predictive models can become a practical part of the finance toolkit.</p>
+                <hr>
+
+                <h2>What Do You Think?</h2>
+                <p>Is your finance team already using predictive logic to support commercial decisions? Have you tried applying machine learning models like decision trees in pricing or margin analysis? What guardrails could this help reinforce in your own sales or approval process?</p>
+                <p>I'd love to hear your thoughts, feedback, or experiences.</p>
+                <blockquote>
+                    <p><strong>Let's Lead Finance Forward — With data, confidence, and code.</strong></p>
+                </blockquote>
+            </main>
+        </div>
+    </div>
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
+</body>
+</html> 
