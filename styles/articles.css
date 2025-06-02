@@ -107,4 +107,15 @@
         font-size: var(--text-lg);
         line-height: var(--text-lg--line-height);
     }
+}
+
+@media (width < 40rem) {
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+    .article-card {
+        display: block;
+        height: auto;
+        overflow: visible;
+    }
 } 
