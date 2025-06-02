@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <li><a href="mailto:robbert.zillesen@gmail.com">✉️ robbert.zillesen@gmail.com</a></li>
                         <li><a href="https://www.linkedin.com/in/robbert-zillesen/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a></li>
                         <li><a href="https://www.linkedin.com/in/robbert-zillesen/recent-activity/articles/" target="_blank" rel="noopener noreferrer">🔗 My articles</a></li>
-                        <li><a href="https://drive.google.com/file/d/1seJEJL02VVZqE72Vrr8VHe4iW224Ru2-/view?usp=drive_link" target="_blank" rel="noopener noreferrer">📁 Download full resume</a></li>
+                        <li><a href="https://drive.google.com/drive/folders/1lpwgiwEudUpaZaKkLhvIU4dyzsUhk8L2?usp=drive_link" target="_blank" rel="noopener noreferrer">📁 Download full resume</a></li>
                     </ul>
                 </div>
                 <div class="footer-bottom">
