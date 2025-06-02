@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="nav-menu">
                     <a href="index.html" class="nav-link" data-page="index">Home</a>
                     <a href="how.html" class="nav-link" data-page="how">How</a>
+                    <a href="articles.html" class="nav-link" data-page="articles">Articles</a>
                     <a href="achievements.html" class="nav-link" data-page="achievements">Achievements</a>
                     <a href="career_timeline.html" class="nav-link" data-page="career_timeline">Career</a>
                     <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
