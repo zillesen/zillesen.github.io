@@ -107,7 +107,7 @@
     transform: rotate(45deg) translate(-0.33rem, -0.33rem);
 }
 
-@media (width >= 40rem) {
+@media (width >= 48rem) {
     .nav-container {
         padding: 0 var(--standard-padding);
         height: 3.5rem;
