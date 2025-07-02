@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="footer-section footer-contact">
                     <h4>Contact Info:</h4>
                     <ul>
-                        <li><a href="mailto:robbert.zillesen@gmail.com">✉️ robbert.zillesen@gmail.com</a></li>
+                        <li><a href="mailto:rzillesen@gmail.com">✉️ rzillesen@gmail.com</a></li>
                         <li><a href="https://www.linkedin.com/in/robbert-zillesen/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a></li>
                         <li><a href="https://www.linkedin.com/in/robbert-zillesen/recent-activity/articles/" target="_blank" rel="noopener noreferrer">🔗 My articles</a></li>
                         <li><a href="https://drive.google.com/drive/folders/1lpwgiwEudUpaZaKkLhvIU4dyzsUhk8L2?usp=drive_link" target="_blank" rel="noopener noreferrer">📁 Download full resume</a></li>
